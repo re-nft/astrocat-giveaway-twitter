@@ -40,7 +40,7 @@ matched_texts = defaultdict(int)
 
 # Repeat the api multiple times to try to get all replies
 # You may want to change the repetition times, or stop it mannualy (if using jupyter notebook)
-for i in range(1):
+for i in range(100):
     print('loop', i, counts)
     time.sleep(5)  # API Limit: 180req / 15min(900sec)
     result_tweets = api.search(search_term, count=100, since_id=TARGET_TWEET_ID, max_id=OLDEST_ID)
@@ -57,11 +57,9 @@ for i in range(1):
             counts[no_match] += 1
 
 f = open("responses-raw.csv", "a")
-f_ = open("responses.csv", "a")
 
 for tweet in matched_texts.keys():
   f.write(f"[START]{tweet}[END]\n")
-  f_.write()
 
 f.close()
 
